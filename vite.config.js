@@ -13,12 +13,14 @@ export default defineConfig({
       fileName: (format) => `mybargraph.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'react/jsx-runtime', 'prop-types'],
       output: {
         exports: 'named',
         globals: {
           react: 'React',
-          'react-dom': 'ReactDOM'
+          'react-dom': 'ReactDOM',
+          'react/jsx-runtime': 'jsxRuntime',
+          'prop-types': 'PropTypes'
         },
       },
     },
