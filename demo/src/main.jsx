@@ -1,36 +1,26 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import MyBargraph from '../../src/components/MyBargraph.jsx';
 
-const DemoApp = () => {
-  const [val, setVal] = useState(45);
+function Demo() {
+  const [value, setValue] = useState(50);
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', background: '#fff', padding: '32px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}>
-      <h1 style={{ margin: '0 0 8px 0', fontSize: '1.8rem', color: '#0f172a' }}>MyBargraph Demo</h1>
-      <p style={{ color: '#64748b', marginBottom: '24px' }}>Modul 324 DevOps – Autor: Alessio Fano</p>
+    <div style={{ maxWidth: 500, margin: '40px auto', fontFamily: 'system-ui, sans-serif' }}>
+      <h2>MyBargraph Demo (Alessio Fano)</h2>
+      <p style={{ color: '#666' }}>Modul 324 DevOps – Test der Komponente</p>
 
-      <MyBargraph label="Speicherauslastung (Standard)" value={val} maxvalue={100} barwidthpx={500} color="#2563eb" />
-      <MyBargraph label="CPU-Last (Orange/Warnung)" value={78} maxvalue={100} barwidthpx={500} color="#f97316" />
-      <MyBargraph label="Netzwerkkapazität (Erfolg/Grün)" value={92} maxvalue={100} barwidthpx={500} color="#10b981" />
+      <MyBargraph label="Test 1 (Blau)" value={value} maxvalue={100} color="#2563eb" />
+      <MyBargraph label="Test 2 (Grün)" value={80} maxvalue={100} color="#10b981" />
+      <MyBargraph label="Test 3 (Orange)" value={30} maxvalue={100} color="#f97316" />
 
-      <div style={{ marginTop: '24px', display: 'flex', gap: '12px', alignItems: 'center' }}>
-        <button
-          onClick={() => setVal(prev => Math.max(0, prev - 10))}
-          style={{ padding: '8px 16px', background: '#e2e8f0', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
-        >
-          - 10
-        </button>
-        <button
-          onClick={() => setVal(prev => Math.min(100, prev + 10))}
-          style={{ padding: '8px 16px', background: '#2563eb', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
-        >
-          + 10
-        </button>
-        <span style={{ color: '#475569' }}>Aktueller interaktiver Wert: <strong>{val}%</strong></span>
+      <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
+        <button onClick={() => setValue(v => Math.max(0, v - 10))}>- 10%</button>
+        <button onClick={() => setValue(v => Math.min(100, v + 10))}>+ 10%</button>
+        <button onClick={() => setValue(50)}>Reset</button>
       </div>
     </div>
   );
-};
+}
 
-createRoot(document.getElementById('root')).render(<DemoApp />);
+createRoot(document.getElementById('root')).render(<Demo />);

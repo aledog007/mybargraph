@@ -1,16 +1,49 @@
-# React + Vite
+# @aledog007/mybargraph
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Einfache, konfigurierbare React-Balkenkomponente für das Modul 324 (DevOps) an der BBW.
 
-Currently, two official plugins are available:
+Autor: **Alessio Fano**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Installation
 
-## React Compiler
+```bash
+npm install @aledog007/mybargraph
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Verwendung
 
-## Expanding the Oxlint configuration
+```jsx
+import MyBargraph from '@aledog007/mybargraph';
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+function App() {
+  return (
+    <MyBargraph
+      label="Projektfortschritt"
+      value={65}
+      maxvalue={100}
+      barwidthpx={400}
+      color="#2563eb"
+    />
+  );
+}
+```
+
+Das CSS wird über `vite-plugin-lib-inject-css` automatisch eingebunden.
+
+## Props
+
+| Prop | Typ | Default | Beschreibung |
+| :--- | :--- | :--- | :--- |
+| `value` | number | required | Aktueller Wert |
+| `maxvalue` | number | `100` | Maximalwert |
+| `barwidthpx` | number | `350` | Breite des Balkens in Pixeln |
+| `label` | string | `''` | Text über dem Balken |
+| `color` | string | `'#2563eb'` | Farbe des Balkens |
+| `showValue` | boolean | `true` | Zeigt Wert und Prozent an |
+
+## Scripts
+
+```bash
+npm run demo    # Startet die lokale Demo
+npm run build   # Baut die Library nach dist/
+```
